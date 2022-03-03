@@ -1,0 +1,8 @@
+FROM python:3.8
+
+ENV PATH /usr/local/bin:$PATH
+ADD . /fish
+WORKDIR /fish
+
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
+RUN pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
