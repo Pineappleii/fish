@@ -12,7 +12,7 @@ class zFrontier:
         self.user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ' \
                           'Chrome/80.0.3987.163 Safari/537.36 '
         self.headers = {
-            'Referer': 'https://www.zfrontier.com/',
+            'Referer': 'https://www.zfrontier.com/app/',
             'User-Agent': self.user_agent,
         }
 
@@ -28,7 +28,7 @@ class zFrontier:
         self.zFrontierLogin(settings.ZF_USERNAME, settings.ZF_PASSWORD)
         self.zFrontier.get(f'https://www.zfrontier.com/user/home/{settings.ZF_USERID}',
                            headers=self.headers, allow_redirects=False)
-        checkInUrl = 'https://www.zfrontier.com/api/checkIn'
+        checkInUrl = 'https://www.zfrontier.com/v2/sign'
         response = self.zFrontier.post(checkInUrl, headers=self.headers, allow_redirects=False)
         return response.text
 
