@@ -4,6 +4,8 @@ import tornado.web
 from _env_settings import settings
 import zFrontier_utils
 from base import BaseHandler
+from bullshit import BullshitGenerator
+
 from log_utils import logger
 from mfa_utils import generate_otp
 
@@ -35,12 +37,23 @@ class zFrontierHandler(BaseHandler):
         self.write(res)
 
 
+class BullshitHandler(BaseHandler):
+    async def get(self):
+        a = self.get_argument('a')
+        b = self.get_argument('b')
+        c = self.get_argument('c')
+        bullshit = BullshitGenerator()
+        res = bullshit.main(a, b, c)
+        self.write(res)
+
+
 def make_app():
     return tornado.web.Application([
         (r'/', HealthCheckHandler),
         (r'/jms', JmsMFAHandler),
         (r'/ali', AliMFAHandler),
         (r'/zFrontier', zFrontierHandler),
+        (r'/bullshit', BullshitHandler),
     ])
 
 
