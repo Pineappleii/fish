@@ -4,7 +4,7 @@ import tornado.web
 from _env_settings import settings
 import zFrontier_utils
 from base import BaseHandler
-from bullshit import BullshitGenerator
+from bullshit_utils import BullshitGenerator
 
 from log_utils import logger
 from mfa_utils import generate_otp
