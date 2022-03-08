@@ -7,6 +7,9 @@ from log_utils import logger
 class zFrontier:
 
     def __init__(self):
+        """
+        实例化类时创建一个session
+        """
         self.zFrontier = requests.session()
         self.user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ' \
                           'Chrome/80.0.3987.163 Safari/537.36 '

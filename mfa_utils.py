@@ -21,14 +21,19 @@ def int_to_bytestring(i, padding=8):
 
 
 def generate_otp(secret):
+    """
+    生成MFA安全码
+    :param secret: 用户秘钥
+    :return: MFA安全码
+    """
     for_time = datetime.datetime.now()
     i = time.mktime(for_time.timetuple())
-    input = int(i / 30)
+    simulate_input = int(i / 30)
     digest = hashlib.sha1
     digits = 6
-    if input < 0:
+    if simulate_input < 0:
         raise ValueError('input must be positive integer')
-    hasher = hmac.new(byte_secret(secret), int_to_bytestring(input), digest)
+    hasher = hmac.new(byte_secret(secret), int_to_bytestring(simulate_input), digest)
     hmac_hash = bytearray(hasher.digest())
     offset = hmac_hash[-1] & 0xf
     code = ((hmac_hash[offset] & 0x7f) << 24 |
