@@ -49,11 +49,11 @@ class BullshitHandler(BaseHandler):
 
 def make_app():
     return tornado.web.Application([
-        (r'/', HealthCheckHandler),
-        (r'/jms', JmsMFAHandler),
-        (r'/ali', AliMFAHandler),
-        (r'/zFrontier', zFrontierHandler),
-        (r'/bullshit', BullshitHandler),
+        (r'/api/hello', HealthCheckHandler),
+        (r'/api/jms', JmsMFAHandler),
+        (r'/api/ali', AliMFAHandler),
+        (r'/api/zFrontier', zFrontierHandler),
+        (r'/api/bullshit', BullshitHandler),
     ])
 
 
