@@ -49,15 +49,15 @@ class BullshitHandler(BaseHandler):
 
 def make_app():
     return tornado.web.Application([
-        (r'/api/hello', HealthCheckHandler),
-        (r'/api/jms', JmsMFAHandler),
-        (r'/api/ali', AliMFAHandler),
-        (r'/api/zFrontier', zFrontierHandler),
-        (r'/api/bullshit', BullshitHandler),
+        (r'/fish/api/hello', HealthCheckHandler),
+        (r'/fish/api/jms', JmsMFAHandler),
+        (r'/fish/api/ali', AliMFAHandler),
+        (r'/fish/api/zFrontier', zFrontierHandler),
+        (r'/fish/api/bullshit', BullshitHandler),
     ])
 
 
 if __name__ == '__main__':
     app = make_app()
-    app.listen(80)
+    app.listen(8080)
     tornado.ioloop.IOLoop.current().start()
